@@ -7,6 +7,7 @@ var radiusEl = document.querySelector("#search-radius");
 var historyEl = document.querySelector("#search-history");
 var searchResultsEl = document.querySelector("#search-results");
 var cardData = [];
+var searchAddress = [];
 var searchHistory = JSON.parse(localStorage.getItem("search-history"));
 console.log(searchHistory);
 if (searchHistory === null || searchHistory === "undefined") {
@@ -34,6 +35,7 @@ var locationApi = function(street, city, state, zipCode) {
 
 searchBtnEl.addEventListener("click", function(event) {
   event.preventDefault();
+  debugger;
     var street = addressEl.value;
     var city = cityEl.value;
     var state = stateEl.value;
@@ -44,13 +46,14 @@ searchBtnEl.addEventListener("click", function(event) {
       "state" : state,
       "zipCode" : zipCode
     }
-    
     searchHistory.push(searchHistoryObject);
     locationApi(street, city, state, zipCode);
     displaySearchHistory(street, city, state, zipCode);
     setLocalStorage();
     pizzaSearchEl();
 })
+
+
 
 var setLocalStorage = function() {
   localStorage.setItem("search-history", JSON.stringify(searchHistory));
@@ -69,11 +72,20 @@ var displaySearchHistory = function(street, city, state, zipCode) {
   historyBtn.addEventListener("click", function(event) {
     event.preventDefault();
     console.log(event.target);
+    var searchHistoryObject = {
+      "street" : street,
+      "city" : city,
+      "state" : state,
+      "zipCode" : zipCode
+    }
+    searchAddress.pop();
+    searchAddress.push(searchHistoryObject);
+    console.log(searchAddress);
     locationApi(street, city, state, zipCode);
   });
 };
 
-searchHistory.forEach(function() {
+window.addEventListener('load', (function() {
   var searchHistory = JSON.parse(localStorage.getItem("search-history"));
   console.log(searchHistory);
   if(!searchHistory){
@@ -84,11 +96,10 @@ searchHistory.forEach(function() {
       displaySearchHistory(searchHistory[i].street,searchHistory[i].city,searchHistory[i].state,searchHistory[i].zipCode);
     }
   }
-});
+}));
 
 
 var pizzaSearchEl = function (lat, lon) {
-  
   const options = {
       method: 'GET',
       headers: {
@@ -96,43 +107,56 @@ var pizzaSearchEl = function (lat, lon) {
           Authorization: 'fsq3qsYn7YLzG3qpDo0M38r99P7w7IKfqk5K5aPX9rbTkok='
       }
   };
-console.log(lat, lon);
-if (lat && lon) {
+  console.log(lat, lon);
+  if (lat && lon) { 
     fetch('https://api.foursquare.com/v3/places/search?ll=' + lat + ',' + lon + '&radius=40233&categories=13064', options).then(function (response) {
-        response.json().then(function (data) {
-            console.log(data);
-
-            for (i = 0; i < data.results.length; i++) {
-              var card = document.createElement("div");
-              card.setAttribute("class", "card");
-              var cardContent = document.createElement("div");
-              cardContent.setAttribute("class", "content");
-              var name = document.createElement("h2");
-              name.setAttribute("class", "title");
-              name.innerHTML = data.results[i].name;
-              var address = document.createElement("p");
-              address.innerHTML = data.results[i].location.address + " " +  data.results[i].location.locality + " " + data.results[i].location.region + " " + data.results[i].location.postcode;
-              var cardBtn = document.createElement("button");
-              cardBtn.setAttribute("class", "button is-link");
-              cardBtn.innerHTML = "Directions";
-              cardContent.appendChild(cardBtn);
-              cardContent.appendChild(name);
-              cardContent.appendChild(address);
-              card.appendChild(cardContent);
-              searchResultsEl.appendChild(card);
-              var cardResult = {
-                "name" : data.results[i].name,
-                "address" : data.results[i].location.address,
-                "city" : data.results[i].location.locality,
-                "state" : data.results[i].location.region,
-                "zipCode" : data.results[i].location.postcode
-              }           
-            cardData.push(cardResult); 
-            
-            }
-            console.log(cardData); 
-   
-        });
+      response.json().then(function (data) {
+        console.log(data);
+        searchResultsEl.innerHTML="";
+        //working spot
+        if(!cardResult){}else{
+          for(i=0;cardResult.length;i++){
+            cardResult.pop(0);
+            console.log
+          }
+        }
+        for (i = 0; i < data.results.length; i++) {
+          var card = document.createElement("div");
+          card.setAttribute("class", "card column is-2 m-3");
+          var cardContent = document.createElement("div");
+          cardContent.setAttribute("class", "content");
+          var name = document.createElement("h2");
+          name.setAttribute("class", "title");
+          name.innerHTML = data.results[i].name;
+          var address = document.createElement("p");
+          address.innerHTML = data.results[i].location.address + " " +  data.results[i].location.locality + " " + data.results[i].location.region + " " + data.results[i].location.postcode;
+          var cardBtn = document.createElement("button");
+          cardBtn.setAttribute("class", "button is-link");
+          cardBtn.setAttribute("id", i);
+          cardBtn.innerHTML = "Directions";
+          cardBtn.addEventListener("click", function(event){
+            event.preventDefault();
+            console.log(this.id);
+            var startAddress = searchAddress.street + "," + searchAddress.city + "," + searchAddress.state + "+" + searchAddress.zipCode;
+            startAddress = startAddress.replace(" ","+");
+            console.log(startAddress);
+          })
+          cardContent.appendChild(name);
+          cardContent.appendChild(address);
+          cardContent.appendChild(cardBtn);
+          card.appendChild(cardContent);
+          searchResultsEl.appendChild(card);
+          var cardResult = {
+            "name" : data.results[i].name,
+            "address" : data.results[i].location.address,
+            "city" : data.results[i].location.locality,
+            "state" : data.results[i].location.region,
+            "zipCode" : data.results[i].location.postcode
+          }           
+          cardData.push(cardResult); 
+        }
+        console.log(cardData);    
+      });
     });
   }
 };

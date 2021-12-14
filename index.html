@@ -17,22 +17,15 @@
                 <div class="column is-one-quarter">
                     <form class="notification is-warning">
                         <label class="zip-code is-size-5" for="location">Enter Your Zip Code:</label>
-                        <input type="text" id="zip-code" placeholder="zip code">
-                        <br>
-                        <label class="radius is-size-5" for="search-radius">Choose Your Search Radius:</label>
-                        <select name="search-radius" id="search-radius">
-                            <option value=""></option>
-                            <option value="10-miles">10 Miles</option>
-                            <option value="25-miles">25 Miles</option>
-                            <option value="50-miles">50 Miles</option>
-                        </select>
-                        <button class="button is-danger is-rounded" type="submit">Submit</button>
+                        <input type="text" id="zip-code" placeholder="zip code" class="input is-medium">
+                        <br><br>
+                        <button class="button is-danger is-rounded" type="submit" id="search-btn">Submit</button>
                     </form>
                     <div>
-                        <p class="notification is-danger is-size-3">Search History</p>
+                        <p class="notification is-danger is-size-3" id="search-history">Search History</p>
                     </div>
                 </div>
-                <div class="column is-three-quarter">
+                <div class="column is-three-quarter" id="search-results">
                     <p class="notification is-warning is-size-3">Search Results Cards</p>
                 </div>
             </div>

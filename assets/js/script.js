@@ -1,4 +1,7 @@
 var searchBtnEl = document.querySelector("#search-btn");
+var addressEl = document.querySelector("#address");
+var cityEl = document.querySelector("#city");
+var stateEl = document.querySelector("#state");
 var zipCodeEl = document.querySelector("#zip-code");
 var radiusEl = document.querySelector("#search-radius");
 var historyEl = document.querySelector("#search-history");
@@ -6,12 +9,12 @@ var searchResultsEl = document.querySelector("#search-results");
 var cardData = [];
 var searchHistory = JSON.parse(localStorage.getItem("search-history"));
 console.log(searchHistory);
-if (searchHistory === null) {
+if (searchHistory === null || searchHistory === "undefined") {
   searchHistory = [];
 };
 
-var locationApi = function(searchTerm) {
-  var apiUrl = "https://us1.locationiq.com/v1/search.php?key=pk.ba9a631a2a6a1d6a180f349a092cf72b&q=" + searchTerm + "&format=json";
+var locationApi = function(street, city, state, zipCode) {
+  var apiUrl = "https://us1.locationiq.com/v1/search.php?key=pk.ba9a631a2a6a1d6a180f349a092cf72b&street=" + street + "&city=" + city + "&state=" + state + "&postalcode=" + zipCode + "&format=json";
   fetch(apiUrl).then(function(response) {
     if (response.ok) {
       console.log(response);
@@ -31,13 +34,15 @@ var locationApi = function(searchTerm) {
 
 searchBtnEl.addEventListener("click", function(event) {
   event.preventDefault();
-    var searchTerm = zipCodeEl.value;
-    searchHistory.push(searchTerm);
-    locationApi(searchTerm);
-    displaySearchHistory(searchTerm);
-    setLocalStorage(searchTerm);
+    var street = addressEl.value;
+    var city = cityEl.value;
+    var state = stateEl.value;
+    var zipCode = zipCodeEl.value;
+    searchHistory.push(street + " " + city + " " + state + " " + zipCode);
+    locationApi(street, city, state, zipCode);
+    displaySearchHistory(street, city, state, zipCode);
+    setLocalStorage();
     pizzaSearchEl();
-    //displaySearchResults(searchTerm);
 })
 
 var setLocalStorage = function() {
@@ -48,15 +53,15 @@ var setLocalStorage = function() {
   displaySearchHistory();
 };
 
-var displaySearchHistory = function(searchTerm) {
+var displaySearchHistory = function(street, city, state, zipCode) {
   var historyBtn = document.createElement("button");
-  historyBtn.innerHTML = searchTerm;
+  historyBtn.innerHTML = street + " " + city + " " + state + " " + zipCode;
   historyBtn.setAttribute("class", "button is-warning is-rounded history");
   historyEl.appendChild(historyBtn);
   historyBtn.addEventListener("click", function(event) {
     event.preventDefault();
     console.log(event.target);
-    //displaySearchResults()
+    locationApi(street, city, state, zipCode);
   });
 };
 
@@ -76,8 +81,6 @@ var pizzaSearchEl = function (lat, lon) {
   };
 console.log(lat, lon);
 if (lat && lon) {
-
-
     fetch('https://api.foursquare.com/v3/places/search?ll=' + lat + ',' + lon + '&radius=40233&categories=13064', options).then(function (response) {
         response.json().then(function (data) {
             console.log(data);
@@ -106,10 +109,7 @@ if (lat && lon) {
                 "city" : data.results[i].location.locality,
                 "state" : data.results[i].location.region,
                 "zipCode" : data.results[i].location.postcode
-            }
-
-            
-            
+              }           
             cardData.push(cardResult); 
             }    
    

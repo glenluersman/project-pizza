@@ -38,7 +38,14 @@ searchBtnEl.addEventListener("click", function(event) {
     var city = cityEl.value;
     var state = stateEl.value;
     var zipCode = zipCodeEl.value;
-    searchHistory.push(street + " " + city + " " + state + " " + zipCode);
+    var searchHistoryObject = {
+      "street" : street,
+      "city" : city,
+      "state" : state,
+      "zipCode" : zipCode
+    }
+    
+    searchHistory.push(searchHistoryObject);
     locationApi(street, city, state, zipCode);
     displaySearchHistory(street, city, state, zipCode);
     setLocalStorage();
@@ -50,6 +57,7 @@ var setLocalStorage = function() {
   if (searchHistory !== "undefined") {
     return;
   }
+  
   displaySearchHistory();
 };
 
@@ -65,8 +73,17 @@ var displaySearchHistory = function(street, city, state, zipCode) {
   });
 };
 
-searchHistory.forEach(function(searchHistory) {
-  displaySearchHistory(searchHistory);
+searchHistory.forEach(function() {
+  var searchHistory = JSON.parse(localStorage.getItem("search-history"));
+  console.log(searchHistory);
+  if(!searchHistory){
+    return;
+  }else{
+    for(i=0;i<searchHistory.length;i++)
+    {
+      displaySearchHistory(searchHistory[i].street,searchHistory[i].city,searchHistory[i].state,searchHistory[i].zipCode);
+    }
+  }
 });
 
 
@@ -111,7 +128,9 @@ if (lat && lon) {
                 "zipCode" : data.results[i].location.postcode
               }           
             cardData.push(cardResult); 
-            }    
+            
+            }
+            console.log(cardData); 
    
         });
     });

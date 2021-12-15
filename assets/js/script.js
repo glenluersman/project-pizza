@@ -39,7 +39,6 @@ var locationApi = function(street, city, state, zipCode) {
 
 searchBtnEl.addEventListener("click", function(event) {
   event.preventDefault();
-  debugger;
     var street = addressEl.value;
     var city = cityEl.value;
     var state = stateEl.value;
@@ -141,10 +140,12 @@ var pizzaSearchEl = function (lat, lon) {
             var startAddress = searchAddress[0].street + "," + searchAddress[0].city + "," + searchAddress[0].state + "+" + searchAddress[0].zipCode;
             startAddress = startAddress.replaceAll(" ","+");
             console.log(startAddress);
+            console.log(cardData);
             var endAddress = cardData[this.id].address + "," + cardData[this.id].city + "," + cardData[this.id].state + "+" + cardData[this.id].zipCode;
             endAddress = endAddress.replaceAll(" ", "+");
             console.log(endAddress);
-            var directionString =  "https://www.mapquestapi.com/staticmap/v5/map?start="+startAddress+"&end="+ endAddress +"&size=600,400@2x&key=AqHArcuZKcSvXv0Y65s22KEGc8W1GaLo"  
+            var directionString =  "https://www.mapquestapi.com/staticmap/v5/map?start="+startAddress+"&end="+ endAddress +"&size=600,400@2x&key=AqHArcuZKcSvXv0Y65s22KEGc8W1GaLo" 
+            console.log(directionString);
             fetch(directionString)
               .then(function(response){
                 console.log(response);
@@ -175,6 +176,8 @@ var pizzaSearchEl = function (lat, lon) {
 
                   closeBtn.addEventListener('click',function(){
                     modal.style.display = 'none';
+                    var deleteModal = document.querySelector(".modal");
+                    deleteModal.parentNode.removeChild(deleteModal);
                   })
 
                   window.addEventListener('click', function(event){

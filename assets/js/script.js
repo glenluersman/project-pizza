@@ -6,9 +6,13 @@ var zipCodeEl = document.querySelector("#zip-code");
 var radiusEl = document.querySelector("#search-radius");
 var historyEl = document.querySelector("#search-history");
 var searchResultsEl = document.querySelector("#search-results");
+var pageEl = document.querySelector("#page");
+var modal = null;
+var closeBtn = null;
 var cardData = [];
 var searchAddress = [];
 var searchHistory = JSON.parse(localStorage.getItem("search-history"));
+
 console.log(searchHistory);
 if (searchHistory === null || searchHistory === "undefined") {
   searchHistory = [];
@@ -113,11 +117,9 @@ var pizzaSearchEl = function (lat, lon) {
       response.json().then(function (data) {
         console.log(data);
         searchResultsEl.innerHTML="";
-        //working spot
-        if(!cardResult){}else{
-          for(i=0;cardResult.length;i++){
-            cardResult.pop(0);
-            console.log
+        if(!cardData){}else{
+          for(i=0;cardData.length;i++){
+            cardData.pop(0);
           }
         }
         for (i = 0; i < data.results.length; i++) {
@@ -136,10 +138,54 @@ var pizzaSearchEl = function (lat, lon) {
           cardBtn.innerHTML = "Directions";
           cardBtn.addEventListener("click", function(event){
             event.preventDefault();
-            console.log(this.id);
-            var startAddress = searchAddress.street + "," + searchAddress.city + "," + searchAddress.state + "+" + searchAddress.zipCode;
-            startAddress = startAddress.replace(" ","+");
+            var startAddress = searchAddress[0].street + "," + searchAddress[0].city + "," + searchAddress[0].state + "+" + searchAddress[0].zipCode;
+            startAddress = startAddress.replaceAll(" ","+");
             console.log(startAddress);
+            var endAddress = cardData[this.id].address + "," + cardData[this.id].city + "," + cardData[this.id].state + "+" + cardData[this.id].zipCode;
+            endAddress = endAddress.replaceAll(" ", "+");
+            console.log(endAddress);
+            var directionString =  "https://www.mapquestapi.com/staticmap/v5/map?start="+startAddress+"&end="+ endAddress +"&size=600,400@2x&key=AqHArcuZKcSvXv0Y65s22KEGc8W1GaLo"  
+            fetch(directionString)
+              .then(function(response){
+                console.log(response);
+                var directionModal = document.createElement("div");
+                directionModal.setAttribute("class","modal");
+                  var modalBackground = document.createElement("div");
+                  modalBackground.setAttribute("class", "modal-background");
+                  var modalContent = document.createElement("div");
+                  modalContent.setAttribute("class", "modal-content");
+                    var modalP = document.createElement("p");
+                    modalP.setAttribute("class","image is-4by3");
+                      var modalImg = document.createElement("img");
+                      modalImg.setAttribute("src", response.url);
+                      modalImg.setAttribute("alt", "Map giving direction from starting address to location of restaurant");
+                  var modalClose = document.createElement("button");
+                  modalClose.setAttribute("class","modal-close is-large");
+                  modalClose.setAttribute("aria-label", "close");
+                  modalP.appendChild(modalImg);
+                  modalContent.appendChild(modalP);
+                  directionModal.appendChild(modalBackground);
+                  directionModal.appendChild(modalContent);
+                  directionModal.appendChild(modalClose);
+                  pageEl.appendChild(directionModal);
+                  modal = document.querySelector(".modal");
+                  modal.style.display = 'block';
+
+                  closeBtn = document.querySelector(".modal-close");
+
+                  closeBtn.addEventListener('click',function(){
+                    modal.style.display = 'none';
+                  })
+
+                  window.addEventListener('click', function(event){
+                    if(event.target.className === 'modal-background'){
+                      modal.style.display = 'none';
+                    }
+                  })
+
+
+
+              })
           })
           cardContent.appendChild(name);
           cardContent.appendChild(address);

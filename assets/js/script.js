@@ -49,6 +49,7 @@ searchBtnEl.addEventListener("click", function (event) {
     "state": state,
     "zipCode": zipCode
   }
+  searchAddress.push(searchHistoryObject);
   searchHistory.push(searchHistoryObject);
   locationApi(street, city, state, zipCode);
   displaySearchHistory(street, city, state, zipCode);
@@ -136,6 +137,7 @@ var pizzaSearchEl = function (lat, lon) {
           cardBtn.innerHTML = "Directions";
           cardBtn.addEventListener("click", function (event) {
             event.preventDefault();
+            console.log(searchAddress);
             var startAddress = searchAddress[0].street + "," + searchAddress[0].city + "," + searchAddress[0].state + "+" + searchAddress[0].zipCode;
             startAddress = startAddress.replaceAll(" ", "+");
             console.log(startAddress);

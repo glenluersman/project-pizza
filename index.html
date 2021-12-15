@@ -1,39 +1,42 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Project Pizza</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-        <link rel="stylesheet" href="./assets/css/style.css">
-    </head>
-    <body id="page">
-        <header>
-            <h1 class="notification is-danger is-full has-text-centered is-size-1">Project Pizza</h1>
-        </header>
-        <div class="bg">
-            <div class="columns">
-                <div class="column is-one-quarter">
-                    <form class="notification is-warning">
-                        <label class="zip-code is-size-5" for="location">Enter Your Address:</label>
-                        <input type="text" id="address" placeholder="address" class="input is-small">
-                        <input type="text" id="city" placeholder="city" class="input is-small">
-                        <input type="text" id="state" placeholder="state" class="input is-small">
-                        <input type="text" id="zip-code" placeholder="zip code" class="input is-small">
-                        <br><br>
-                        <button class="button is-danger is-rounded" type="submit" id="search-btn">Submit</button>
-                    </form>
-                    <div>
-                        <p class="notification is-danger is-size-3" id="search-history">Search History</p>
-                    </div>
-                </div>
-                <div class="column is-three-quarter">
-                    <p class="notification is-warning is-size-3">Search Results Cards</p>
-                    <div class="columns is-flex-wrap-wrap is-variable" id="search-results"></div>
+
+<head>
+    <meta charset="utf-8">
+    <title>Project Pizza</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body id="page">
+    <header>
+        <h1 class="notification is-danger is-full has-text-centered is-size-1">Project Pizza</h1>
+    </header>
+    <div class="bg">
+        <div class="columns">
+            <div class="column is-one-quarter">
+                <form class="notification is-warning">
+                    <label class="zip-code is-size-5" for="location">Enter Your Address:</label>
+                    <input type="text" id="address" placeholder="address" class="input is-small">
+                    <input type="text" id="city" placeholder="city" class="input is-small">
+                    <input type="text" id="state" placeholder="state" class="input is-small">
+                    <input type="text" id="zip-code" placeholder="zip code" class="input is-small">
+                    <br><br>
+                    <button class="button is-danger is-rounded" type="submit" id="search-btn">Submit</button>
+                </form>
+                <div>
+                    <p class="notification is-danger is-size-3" id="search-history">Search History</p>
                 </div>
             </div>
+            <div class="column is-three-quarter">
+
+                <div class="columns is-flex-wrap-wrap is-variable" id="search-results"></div>
+            </div>
         </div>
-        <script src="./assets/js/script.js"></script>
-    </body>
+    </div>
+    <script src="./assets/js/script.js"></script>
+</body>
+
 </html>

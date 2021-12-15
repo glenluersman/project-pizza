@@ -183,6 +183,8 @@ var pizzaSearchEl = function (lat, lon) {
                   window.addEventListener('click', function(event){
                     if(event.target.className === 'modal-background'){
                       modal.style.display = 'none';
+                      var deleteModal = document.querySelector(".modal");
+                      deleteModal.parentNode.removeChild(deleteModal);
                     }
                   })
 

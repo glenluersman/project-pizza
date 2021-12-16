@@ -18,7 +18,7 @@ We have you covered!
 https://yourfunkydad.github.io/project-pizza/
 
 ## Contribution:
-Kevin Jackson
-Jacob Allred
-Jon Chastain
-Glen Luersman
+* Kevin Jackson
+* Jacob Allred
+* Jon Chastain
+* Glen Luersman

@@ -9,9 +9,11 @@ var searchResultsEl = document.querySelector("#search-results");
 var pageEl = document.querySelector("#page");
 var modal = null;
 var closeBtn = null;
+var foodish = [];
 var cardData = [];
 var searchAddress = [];
 var searchHistory = JSON.parse(localStorage.getItem("search-history"));
+
 
 console.log(searchHistory);
 if (searchHistory === null || searchHistory === "undefined") {
@@ -57,8 +59,6 @@ searchBtnEl.addEventListener("click", function (event) {
   pizzaSearchEl();
 })
 
-
-
 var setLocalStorage = function () {
   localStorage.setItem("search-history", JSON.stringify(searchHistory));
   if (searchHistory !== "undefined") {
@@ -102,6 +102,18 @@ window.addEventListener('load', (function () {
 }));
 
 
+for (i = 0; i < 10; i++) {
+  fetch("https://foodish-api.herokuapp.com/api/images/pizza/").then(function (response) {
+    if (response.ok) {
+      console.log(response);
+      response.json().then(function (data) {
+        foodish.push(data.image);
+        console.log(foodish);
+      })
+    }
+  })
+}
+
 var pizzaSearchEl = function (lat, lon) {
   const options = {
     method: 'GET',
@@ -122,15 +134,25 @@ var pizzaSearchEl = function (lat, lon) {
           }
         }
         for (i = 0; i < data.results.length; i++) {
+
           var card = document.createElement("div");
           card.setAttribute("class", "card column is-2 m-3");
           var cardContent = document.createElement("div");
           cardContent.setAttribute("class", "content");
+
+          var cardImg = document.createElement("img");
+          cardImg.setAttribute("class", "img");
+          cardImg.setAttribute("src", foodish[i]);
+
+          cardContent.appendChild(cardImg);
+
+
           var name = document.createElement("h2");
           name.setAttribute("class", "title");
           name.innerHTML = data.results[i].name;
           var address = document.createElement("p");
           address.innerHTML = data.results[i].location.address + " " + data.results[i].location.locality + " " + data.results[i].location.region + " " + data.results[i].location.postcode;
+
           var cardBtn = document.createElement("button");
           cardBtn.setAttribute("class", "button is-link");
           cardBtn.setAttribute("id", i);

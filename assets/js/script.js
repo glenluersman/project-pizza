@@ -136,12 +136,12 @@ var pizzaSearchEl = function (lat, lon) {
         for (i = 0; i < data.results.length; i++) {
 
           var card = document.createElement("div");
-          card.setAttribute("class", "card column is-2 m-3");
+          card.setAttribute("class", "card column has-background-warning is-4 m-3");
           var cardContent = document.createElement("div");
           cardContent.setAttribute("class", "content");
 
           var cardImg = document.createElement("img");
-          cardImg.setAttribute("class", "img");
+          cardImg.setAttribute("class", "img is-fullwidth");
           cardImg.setAttribute("src", foodish[i]);
 
           cardContent.appendChild(cardImg);
@@ -154,7 +154,7 @@ var pizzaSearchEl = function (lat, lon) {
           address.innerHTML = data.results[i].location.address + " " + data.results[i].location.locality + " " + data.results[i].location.region + " " + data.results[i].location.postcode;
 
           var cardBtn = document.createElement("button");
-          cardBtn.setAttribute("class", "button is-link");
+          cardBtn.setAttribute("class", "button is-link is-danger");
           cardBtn.setAttribute("id", i);
           cardBtn.innerHTML = "Directions";
           cardBtn.addEventListener("click", function (event) {

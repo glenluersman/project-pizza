@@ -141,7 +141,7 @@ var pizzaSearchEl = function (lat, lon) {
           cardContent.setAttribute("class", "content");
 
           var cardImg = document.createElement("img");
-          cardImg.setAttribute("class", "img is-fullwidth");
+          cardImg.setAttribute("class", "img");
           cardImg.setAttribute("src", foodish[i]);
 
           cardContent.appendChild(cardImg);

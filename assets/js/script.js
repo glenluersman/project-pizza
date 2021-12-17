@@ -71,7 +71,7 @@ var setLocalStorage = function () {
 var displaySearchHistory = function (street, city, state, zipCode) {
   var historyBtn = document.createElement("button");
   historyBtn.innerHTML = street + " " + city + " " + state + " " + zipCode;
-  historyBtn.setAttribute("class", "button is-warning is-rounded history");
+  historyBtn.setAttribute("class", "button is-multiline is-warning is-rounded history is-medium is-fullwidth");
   historyEl.appendChild(historyBtn);
   historyBtn.addEventListener("click", function (event) {
     event.preventDefault();
@@ -105,10 +105,8 @@ window.addEventListener('load', (function () {
 for (i = 0; i < 10; i++) {
   fetch("https://foodish-api.herokuapp.com/api/images/pizza/").then(function (response) {
     if (response.ok) {
-      console.log(response);
       response.json().then(function (data) {
         foodish.push(data.image);
-        console.log(foodish);
       })
     }
   })
@@ -154,7 +152,7 @@ var pizzaSearchEl = function (lat, lon) {
           address.innerHTML = data.results[i].location.address + " " + data.results[i].location.locality + " " + data.results[i].location.region + " " + data.results[i].location.postcode;
 
           var cardBtn = document.createElement("button");
-          cardBtn.setAttribute("class", "button is-link is-danger");
+          cardBtn.setAttribute("class", "button is-link is-danger is-medium");
           cardBtn.setAttribute("id", i);
           cardBtn.innerHTML = "Directions";
           cardBtn.addEventListener("click", function (event) {

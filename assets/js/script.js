@@ -152,7 +152,7 @@ var pizzaSearchEl = function (lat, lon) {
           address.innerHTML = data.results[i].location.address + " " + data.results[i].location.locality + " " + data.results[i].location.region + " " + data.results[i].location.postcode;
 
           var cardBtn = document.createElement("button");
-          cardBtn.setAttribute("class", "button is-link is-danger is-medium");
+          cardBtn.setAttribute("class", "button is-link is-danger is-medium has-text-black");
           cardBtn.setAttribute("id", i);
           cardBtn.innerHTML = "Directions";
           cardBtn.addEventListener("click", function (event) {

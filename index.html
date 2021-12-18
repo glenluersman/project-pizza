@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Project Pizza</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body id="page">
+    <header>
+        <h1
+            class="notification is-danger is-full has-text-centered is-size-1 has-text-danger has-text-weight-bold is-family-code">
+        </h1>
+        </header>
+    <div class="bg">
+        <div class="columns">
+            <div class="column is-one-quarter-desktop is-full-mobile">
+                <form class="notification is-warning">
+                    <label class="address is-size-3" for="location">Enter Your Address:</label>
+                    <input type="text" id="address" placeholder="address" class="input is-medium">
+                    <input type="text" id="city" placeholder="city" class="input is-medium">
+                    <input type="text" id="state" placeholder="state" class="input is-medium">
+                    <input type="text" id="zip-code" placeholder="zip code" class="input is-medium">
+                    <br><br>
+                    <button class="button is-danger is-rounded is-medium is-fullwidth has-text-black" type="submit" id="search-btn">Submit</button>
+                </form>
+                <div>
+                    <p class="notification is-danger is-size-3 has-text-black" id="search-history">Search History</p>
+
+                </div>
+
+
+            </div>
+            <div class="column is-full is-mobile">
+
+                <div class="columns is-full-mobile is-flex-wrap-wrap is-variable" id="search-results">
+                    <div class="card">
+                        <h2 class="h2"></h2>
+                        <p class="p"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>
+                <a href="https://github.com/YourFunkyDad/project-pizza">Project Pizza</a> by Group 4.
+                &copy; 2021 OSU Coding Bootcamp - Project 1
+            </p>
+        </div>
+    </footer>
+
+    <script src="./assets/js/script.js"></script>
+
+</body>
+
+</html>

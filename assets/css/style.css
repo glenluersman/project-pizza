@@ -20,9 +20,9 @@ html {
 }
 
 h1 {
-  background-image: url(../images/Pizza-Header.png);
+  background-image: url(../images/project-pizza-logo.png), url(../images/about-banner.png);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size:contain, cover;
   font-style: italic;
   color: black;
 }

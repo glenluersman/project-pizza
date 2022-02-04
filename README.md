@@ -2,54 +2,46 @@
  <img width=200px height=200px src="./assets/images/project-pizza-logo.png" alt="Project logo"></a>
 </p>
 
-<h3 align="center">Horiseon</h3>
+<h3 align="center">Project Pizza</h3>
 
 <div align="center">
 
 [![Status](https://img.shields.io/badge/status-active-success.svg)]()
-[![GitHub Issues](https://img.shields.io/github/issues/teamjuli0/gh-plagiarism.svg)](https://github.com/glenluersman/week1-challenge/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/teamjuli0/gh-plagiarism.svg)](https://github.com/glenluersman/week1-challenge/pulls)
+[![GitHub Issues](https://img.shields.io/github/issues/glenluersman/project-pizza.svg)](https://github.com/glenluersman/project-pizza/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/glenluersman/project-pizza.svg)](https://github.com/glenluersman/project-pizza/pulls)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
 </div>
 
 ---
 
-<p align="center"> Confirming code snippets has never been easier!
+<p align="center"> Find that perfect slice! [https://glenluersman.github.io/project-pizza/](https://glenluersman.github.io/project-pizza/)
     <br> 
 </p>
 
 ## <img src="https://github.com/teamjuli0/readme-badges/blob/main/themes/clean-dark/menu-categories/table-of-context.png?raw=true" style="height: 40px">
 
 - [About](#about)
-- [Installing](#installing)
 - [Usage](#usage)
 - [Built With](#built_using)
 - [Authors](#authors)
-- [Example URL Out](#example-url-out)
 - [Questions](#questions)
 - [Screenshots](#screenshots)
 
 ## <img id="about" src="https://github.com/teamjuli0/readme-badges/blob/main/themes/clean-dark/menu-categories/about.png?raw=true" style="height: 40px">
 
-Searching for plagiarism on github can be a bit tidious. Github avoids very specific characters on all of its queries so if you search for something that contains any of those characters, odds are your search will come out empty handed. After spending minutes removing these characters manually time and time again, I came to the realization that it would be much easier if all I had to do was copy, paste, and hit a button. This is how Gh Plagiarism Check came to be. This extension is very light and easy to use. It keeps track of your last 10 searches made by taking in short or long queries, removing anything that github deems unvalueable for searches and creates a new more precise query which opens up automatically in a new tab under github code search. Couldn't get easier than that!
-
-## <img id="installing" src="https://github.com/teamjuli0/readme-badges/blob/main/themes/clean-dark/menu-categories/installing.png?raw=true" style="height: 40px">
-
-This extension can be found on and installed through the [`Chrome Web Store`](https://chrome.google.com/webstore/detail/gh-plagiarism-check/fbnkdiommanmaggjbppgecgpekigaceb?hl=en&authuser=2). For beta features or to get this project running locally, please refer to the manual install documentation of the [`Wiki`](https://github.com/teamjuli0/gh-plagiarism/wiki/Local-Installation).
+Project Pizza is a website that searches for pizzerias within 25 miles of your address. Upon entering your address and clicking submit you are presented with the 10 top rated pizzerias within 25 miles. Your search address is then saved in the search history. Each card displays an image, name and address of pizzeria, and a button for directions to the pizzeria from your address. Upon clicking the directions button a modal pops up with the directions. 
 
 ## <img id="usage" src="https://github.com/teamjuli0/readme-badges/blob/main/themes/clean-dark/menu-categories/usage.png?raw=true" style="height: 40px">
 
-1. Enter search query into input on the top of the extension and hit enter/search button. This will redirect you back to github searches with a search query that more closely matches github's search criteria.
-2. To remove an item from your search history, hit the "backspace" icon on the right of that history item.
-3. To remove all search items at the same time, hit the trashbin on the bottom left of the footer and confirm on the popup.
-4. To jot down quick notes on the scratchpad, click on the book icon in the center of the footer.
-5. You can easily export your data or view it raw on a new tab inside of the settings tab. Here you can also set the maximum length for your search history if you wanted to change it from the default.
+1. Enter address into search form and click submit.
+2. Search addresses are stored under search history for ease of use at a later time.
+3. Click directions on any of the cards to display directions from our address to the pizzeria.
 
 ## <img id="built_using" src="https://github.com/teamjuli0/readme-badges/blob/main/themes/clean-dark/menu-categories/built-using.png?raw=true" style="height: 40px">
 
-- Chrome Extension
-- React.js
+- HTML
+- Bulma
 - Javascript
 
 ## <img id="authors" src="https://github.com/teamjuli0/readme-badges/blob/main/themes/clean-dark/menu-categories/authors.png?raw=true" style="height: 40px">
@@ -62,7 +54,7 @@ This extension can be found on and installed through the [`Chrome Web Store`](ht
 
 ## <img id="questions" src="https://github.com/teamjuli0/readme-badges/blob/main/themes/clean-dark/menu-categories/questions-alt.png?raw=true" style="height: 40px">
 
-- Feel free to open an issue or contact me directly at valdezjulio95@gmail.com if you have any questions about the repo. You can find more of my work at [teamjuli0](https://github.com/teamjuli0/).
+- Feel free to open an issue or contact me directly at glen.luersman@gmail.com if you have any questions about the repo. You can find more of my work at [glenluersman](https://github.com/glenluersman/).
 
 ## <img id="screenshots" src="https://github.com/teamjuli0/readme-badges/blob/main/themes/clean-dark/menu-categories/screenshots.png?raw=true" style="height: 40px">
 

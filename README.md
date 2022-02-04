@@ -15,9 +15,7 @@
 
 ---
 
-<p align="center"> Find that perfect slice! [https://glenluersman.github.io/project-pizza/](https://glenluersman.github.io/project-pizza/)
-    <br> 
-</p>
+Find that perfect slice! [https://glenluersman.github.io/project-pizza/](https://glenluersman.github.io/project-pizza/)
 
 ## <img src="https://github.com/teamjuli0/readme-badges/blob/main/themes/clean-dark/menu-categories/table-of-context.png?raw=true" style="height: 40px">
 
@@ -47,9 +45,6 @@ Project Pizza is a website that searches for pizzerias within 25 miles of your a
 ## <img id="authors" src="https://github.com/teamjuli0/readme-badges/blob/main/themes/clean-dark/menu-categories/authors.png?raw=true" style="height: 40px">
 
 - [glenluersman](https://github.com/glenluersman)
-- [ChastainJon](https://github.com/ChastainJon)
-- [kjjackson619](https://github.com/kjjackson619)
-- [YourFunkyDad](https://github.com/YourFunkyDad)
 - See also the list of [contributors](https://github.com/YourFunkyDad/project-pizza/contributors) who participated in this project.
 
 ## <img id="questions" src="https://github.com/teamjuli0/readme-badges/blob/main/themes/clean-dark/menu-categories/questions-alt.png?raw=true" style="height: 40px">

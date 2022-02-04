@@ -58,10 +58,3 @@ Project Pizza is a website that searches for pizzerias within 25 miles of your a
 ![pizza2](https://user-images.githubusercontent.com/91103314/146656451-0be01eb8-4196-4add-8839-d7f77a3b879f.PNG)
 
 ![pizza3](https://user-images.githubusercontent.com/91103314/146686371-be63436f-f9f7-4d24-abd1-aeb9139b806c.PNG)
-
-
-## Contribution:
-* Kevin Jackson
-* Jacob Allred
-* Jon Chastain
-* Glen Luersman

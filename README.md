@@ -1,5 +1,5 @@
 <p align="center">
- ![logo-round-dark](https://user-images.githubusercontent.com/91103314/152597625-1d86822a-30f5-4371-ba02-9541de9956e9.png)
+ <img width=200px height=200px src=".assets/images/project-pizza-logo.png" alt="Project logo"></a>
 </p>
 
 <h3 align="center">Horiseon</h3>

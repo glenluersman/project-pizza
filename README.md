@@ -15,7 +15,7 @@ We have you covered!
 
 
 ## Website:
-https://yourfunkydad.github.io/project-pizza/
+https://glenluersman.github.io/project-pizza/
 
 ![pizza1](https://user-images.githubusercontent.com/91103314/146656418-8aaa3253-0932-4fdf-b935-1ea4088d3e54.PNG)
 
